@@ -50,7 +50,6 @@ DeliveryLocationUI_left <- function() {
 
 
 
-
   )
   return(res)
 
@@ -67,10 +66,11 @@ DeliveryLocationUI_left <- function() {
 DeliveryLocationUI_right <- function() {
   res <- tagList(
 
-    shiny::actionButton(inputId = 'btn_DeliveryLocation_view',label = 'Query'),
+
+
+    shiny::actionButton(inputId = 'btn_DeliveryLocation_view',label = 'Search'),
 
     tsui::mdl_download_button(id = 'dl_DeliveryLocation',label = 'Download')
-
 
 
 
