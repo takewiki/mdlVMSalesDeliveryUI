@@ -4,10 +4,10 @@ library(shinyWidgets)
 DeliveryLocation_all_columns_ui <- c(
   'Delivery Location',
   'Sales OrderID',
-  'Sales OrderDate',
+  'Sales OrderQty',
   'PN',
   'Product Name',
-  'Sales OrderQty',
+  'Sales OrderDate',
   'Delivery Date',
   'Delivery Qty'
 )
@@ -16,10 +16,10 @@ DeliveryLocation_all_columns_ui <- c(
 DeliveryLocation_default_columns_ui <- c(
   'Delivery Location',
   'Sales OrderID',
-  'Sales OrderDate',
+  'Sales OrderQty',
   'PN',
   'Product Name',
-  'Sales OrderQty'
+  'Sales OrderDate'
 )
 
 #' 交货地点生成器界面
