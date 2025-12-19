@@ -12,13 +12,23 @@ DeliveryLocation_all_columns_ui <- c(
   'Delivery Qty'
 )
 #设置默认值
+# DeliveryLocation_default_columns_ui <- c(
+#   'Delivery Location',
+#   'Sales OrderID',
+#   'Sales OrderDate',
+#   'PN',
+#   'Product Name',
+#   'Sales OrderQty'
+# )
 DeliveryLocation_default_columns_ui <- c(
   'Delivery Location',
   'Sales OrderID',
   'Sales OrderDate',
   'PN',
   'Product Name',
-  'Sales OrderQty'
+  'Sales OrderQty',
+  'Delivery Date',
+  'Delivery Qty'
 )
 
 #' 交货地点生成器界面
@@ -101,7 +111,9 @@ DeliveryLocationUI_right <- function() {
       options = list(
         `actions-box` = TRUE,
         `selected-text-format` = "count > 3",
-        `count-selected-text` = "{0} Columns Seleced",
+        #`count-selected-text` = "{0} Columns Seleced",
+        `count-selected-text` = "Default Value",
+
         size = 10,
         `live-search` = TRUE,
         `live-search-style` = "contains"
@@ -115,11 +127,12 @@ DeliveryLocationUI_right <- function() {
     actionButton("btn_DeliveryLocation_select_all", "Select All",
                  class = "btn-primary btn-sm",
                  style = "margin-right: 5px;"),
-    actionButton("btn_DeliveryLocation_deselect_all", "Deselect All",
-                 class = "btn-secondary btn-sm"),
+    # actionButton("btn_DeliveryLocation_deselect_all", "Deselect All",
+    #              class = "btn-secondary btn-sm"),
+
     actionButton("btn_DeliveryLocation_defaultValue", "Default Value",
-                 class = "btn-primary btn-sm"),
-    verbatimTextOutput("DeliveryLocation_selection_info")
+                 class = "btn-primary btn-sm")
+    #verbatimTextOutput("DeliveryLocation_selection_info")
 
 
 
