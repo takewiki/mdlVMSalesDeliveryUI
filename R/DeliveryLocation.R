@@ -12,23 +12,14 @@ DeliveryLocation_all_columns_ui <- c(
   'Delivery Qty'
 )
 #设置默认值
-# DeliveryLocation_default_columns_ui <- c(
-#   'Delivery Location',
-#   'Sales OrderID',
-#   'Sales OrderDate',
-#   'PN',
-#   'Product Name',
-#   'Sales OrderQty'
-# )
+
 DeliveryLocation_default_columns_ui <- c(
   'Delivery Location',
   'Sales OrderID',
   'Sales OrderDate',
   'PN',
   'Product Name',
-  'Sales OrderQty',
-  'Delivery Date',
-  'Delivery Qty'
+  'Sales OrderQty'
 )
 
 #' 交货地点生成器界面
