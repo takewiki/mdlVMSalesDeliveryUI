@@ -10,6 +10,7 @@ DeliveryLocation_all_columns_ui <- c(
   'Sales OrderDate',
   'Delivery Date',
   'Delivery Qty'
+
 )
 #设置默认值
 
