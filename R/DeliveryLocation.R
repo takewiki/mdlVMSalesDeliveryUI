@@ -101,7 +101,7 @@ DeliveryLocationUI_right <- function() {
       choices = DeliveryLocation_all_columns_ui,
       selected = DeliveryLocation_default_columns_ui,
       options = list(
-        `actions-box` = TRUE,
+        `actions-box` = FALSE,
         `selected-text-format` = "count > 3",
         #`count-selected-text` = "{0} Columns Seleced",
         `count-selected-text` = "Default Value",
