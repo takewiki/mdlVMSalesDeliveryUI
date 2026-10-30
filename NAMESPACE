@@ -2,8 +2,8 @@
 
 export(DeliveryLocationExportUI)
 export(DeliveryLocationExportUI_bottom)
-export(DeliveryLocationExportUI_left)
 export(DeliveryLocationExportUI_right)
+export(DeliveryLocationExport_row_ui)
 export(DeliveryLocationUI)
 export(DeliveryLocationUI_bottom)
 export(DeliveryLocationUI_left)

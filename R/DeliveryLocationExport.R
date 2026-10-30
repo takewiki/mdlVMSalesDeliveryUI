@@ -49,6 +49,40 @@ DeliveryLocationExportUI <- function(tabTitle = 'Export',
 #' @export
 #' @examples
 #' DeliveryLocationExportUI_left()
+#' 一行过滤条件的 UI（首行直接由 UI 渲染，不依赖服务端插入时机）
+#' @export
+DeliveryLocationExport_row_ui <- function(id, initial = list(), labels = NULL) {
+  `%||%` <- function(x, y) if (is.null(x) || length(x) == 0) y else x
+  if (is.null(labels)) labels <- mdlVMSalesDeliveryPkg::DeliveryLocationExport_fields()$label
+  f0 <- initial$field %||% labels[1]
+  if (!f0 %in% labels) f0 <- labels[1]
+  lp0 <- initial$lparen %||% ""
+  if (!lp0 %in% c("", "(", "((")) lp0 <- ""
+  rp0 <- initial$rparen %||% ""
+  if (!rp0 %in% c("", ")", "))")) rp0 <- ""
+  lg0 <- initial$logic %||% "AND"
+  if (!lg0 %in% c("AND", "OR")) lg0 <- "AND"
+  onclick <- sprintf("Shiny.setInputValue('%s','%s',{priority:'event'});document.querySelectorAll('.dlf-row').forEach(function(e){e.classList.remove('is-active');});this.classList.add('is-active');",
+                     "DeliveryLocationExport_filter_active", id)
+  shiny::div(
+    id = id, class = "dlf-row", onclick = onclick,
+    shiny::selectInput(paste0(id, "__lp"), NULL,
+                       choices = c("-" = "", "(" = "(", "((" = "(("),
+                       selected = lp0, selectize = FALSE, width = "70px"),
+    shiny::selectInput(paste0(id, "__field"), NULL, choices = labels,
+                       selected = f0, selectize = FALSE, width = "162px"),
+    shiny::uiOutput(paste0(id, "__op_ui")),
+    shiny::uiOutput(paste0(id, "__val_ui")),
+    shiny::selectInput(paste0(id, "__rp"), NULL,
+                       choices = c("-" = "", ")" = ")", "))" = "))"),
+                       selected = rp0, selectize = FALSE, width = "70px"),
+    shiny::selectInput(paste0(id, "__logic"), NULL,
+                       choices = c("AND" = "AND", "OR" = "OR"),
+                       selected = lg0, selectize = FALSE, width = "100px"),
+    shiny::actionButton(paste0(id, "__del"), "", icon = shiny::icon("minus"))
+  )
+}
+
 DeliveryLocationExportUI_left <- function() {
   res <- tagList(
     tags$head(tags$style(HTML(paste0(
@@ -64,7 +98,7 @@ DeliveryLocationExportUI_left <- function() {
         actionLink("btn_DeliveryLocationExport_filter_insert", "Insert Row"),
         actionLink("btn_DeliveryLocationExport_filter_copy", "Copy Row")
     ),
-    div(id = "DeliveryLocationExport_filter_rows"),
+    div(id = "DeliveryLocationExport_filter_rows", DeliveryLocationExport_row_ui("dle_001")),
     tags$hr(),
     shiny::actionButton(inputId = "btn_DeliveryLocationExport_view", label = "Search"),
     tsui::mdl_download_button(id = 'dl_DeliveryLocationExport', label = 'Export')
